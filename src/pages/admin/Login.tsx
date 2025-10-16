@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 
 const DEFAULT_ID = "Nilesh25@";
 const DEFAULT_PASSWORD = "freefire25@";
+const SESSION_KEY = 'adminAuthed';
+const LOGIN_AT_KEY = 'adminLoginAt';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const authed = typeof window !== 'undefined' && (sessionStorage.getItem("adminAuthed") === "true" || localStorage.getItem("adminAuthed") === "true");
+  const authed = typeof window !== 'undefined' && sessionStorage.getItem(SESSION_KEY) === "true";
   if (authed) {
     return <Navigate to="/admin" replace />;
   }
@@ -23,8 +25,8 @@ const AdminLogin = () => {
     e.preventDefault();
     setError(null);
     if (id === DEFAULT_ID && password === DEFAULT_PASSWORD) {
-      // Use sessionStorage only; AdminLayout checks this key
-      sessionStorage.setItem("adminAuthed", "true");
+      sessionStorage.setItem(SESSION_KEY, "true");
+      sessionStorage.setItem(LOGIN_AT_KEY, String(Date.now()));
       navigate("/admin", { replace: true });
     } else {
       setError("Invalid credentials");

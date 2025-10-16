@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, Outlet, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,21 +20,52 @@ const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const SESSION_KEY = 'adminAuthed';
+  const LOGIN_AT_KEY = 'adminLoginAt';
 
   // On hard refresh, clear auth (forces login prompt)
   if (typeof window !== 'undefined') {
     const navEntries = (performance.getEntriesByType?.('navigation') as PerformanceNavigationTiming[] | undefined);
     const isReload = !!navEntries && navEntries.length > 0 && navEntries[0].type === 'reload';
     if (isReload) {
-      sessionStorage.removeItem('adminAuthed');
+      sessionStorage.removeItem(SESSION_KEY);
+      sessionStorage.removeItem(LOGIN_AT_KEY);
     }
   }
 
-  // Require sessionStorage so a hard refresh asks to login again
-  const authed = typeof window !== 'undefined' && sessionStorage.getItem('adminAuthed') === 'true';
+  // Require sessionStorage so a hard refresh asks to login again and enforce short expiry
+  const authed = typeof window !== 'undefined' && sessionStorage.getItem(SESSION_KEY) === 'true';
+  const loginAt = typeof window !== 'undefined' ? Number(sessionStorage.getItem(LOGIN_AT_KEY) || '0') : 0;
+  const MAX_SESSION_MS = 10 * 60 * 1000; // 10 minutes
+  const expired = loginAt && Date.now() - loginAt > MAX_SESSION_MS;
+  if (expired) {
+    sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(LOGIN_AT_KEY);
+  }
   if (!authed) {
     return <Navigate to="/admin/login" replace />
   }
+
+  // Keep-alive: update last activity timestamp on interactions
+  useEffect(() => {
+    const bump = () => sessionStorage.setItem(LOGIN_AT_KEY, String(Date.now()));
+    bump();
+    window.addEventListener('click', bump, { passive: true });
+    window.addEventListener('keydown', bump, { passive: true });
+    const interval = setInterval(() => {
+      const ts = Number(sessionStorage.getItem(LOGIN_AT_KEY) || '0');
+      if (ts && Date.now() - ts > MAX_SESSION_MS) {
+        sessionStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(LOGIN_AT_KEY);
+        navigate('/admin/login', { replace: true });
+      }
+    }, 15000);
+    return () => {
+      window.removeEventListener('click', bump as any);
+      window.removeEventListener('keydown', bump as any);
+      clearInterval(interval);
+    };
+  }, [navigate]);
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -96,7 +127,15 @@ const navigation = [
         </nav>
 
         <div className="p-4 border-t border-gray-200">
-          <Button variant="outline" className="w-full">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => {
+              sessionStorage.removeItem(SESSION_KEY);
+              sessionStorage.removeItem(LOGIN_AT_KEY);
+              navigate('/admin/login', { replace: true });
+            }}
+          >
             <LogOut className="h-4 w-4 mr-2" />
             Logout
           </Button>
