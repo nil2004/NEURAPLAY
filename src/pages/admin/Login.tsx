@@ -27,7 +27,8 @@ const AdminLogin = () => {
     if (id === DEFAULT_ID && password === DEFAULT_PASSWORD) {
       sessionStorage.setItem(SESSION_KEY, "true");
       sessionStorage.setItem(LOGIN_AT_KEY, String(Date.now()));
-      navigate("/admin", { replace: true });
+      // Give the browser a tick to persist sessionStorage before route change
+      setTimeout(() => navigate("/admin", { replace: true }), 0);
     } else {
       setError("Invalid credentials");
     }
