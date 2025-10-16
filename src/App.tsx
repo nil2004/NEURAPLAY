@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -32,33 +32,43 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          {/* Public Routes with Navbar and Footer */}
-          <Route path="/*" element={
+          {/* Public Routes */}
+          <Route element={
             <>
               <Navbar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/tournament" element={<Tournament />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/schedule" element={<Schedule />} />
-                <Route path="/rules" element={<Rules />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <Outlet />
               <Footer />
             </>
-          } />
+          }>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/tournament" element={<Tournament />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/rules" element={<Rules />} />
+          </Route>
           
-          {/* Admin Routes - No Navbar/Footer */}
+          {/* Admin Login */}
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/*" element={<AdminLayout />}>
+          
+          {/* Protected Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="registrations" element={<RegistrationManagement />} />
             <Route path="notifications" element={<NotificationControls />} />
-          <Route path="settings" element={<SiteSettings />} />
+            <Route path="settings" element={<SiteSettings />} />
           </Route>
+          
+          {/* 404 Route */}
+          <Route path="*" element={
+            <>
+              <Navbar />
+              <NotFound />
+              <Footer />
+            </>
+          } />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
