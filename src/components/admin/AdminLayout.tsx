@@ -21,8 +21,8 @@ const AdminLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Check authentication status
-  const authed = typeof window !== 'undefined' && (sessionStorage.getItem('adminAuthed') === 'true' || localStorage.getItem('adminAuthed') === 'true');
+  // Require sessionStorage so a hard refresh asks to login again
+  const authed = typeof window !== 'undefined' && sessionStorage.getItem('adminAuthed') === 'true';
   if (!authed) {
     return <Navigate to="/admin/login" replace />
   }

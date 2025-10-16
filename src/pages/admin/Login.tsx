@@ -23,9 +23,8 @@ const AdminLogin = () => {
     e.preventDefault();
     setError(null);
     if (id === DEFAULT_ID && password === DEFAULT_PASSWORD) {
-      // Short-lived session flag (clears on reload with our guard) + persistent for SPA nav
+      // Use sessionStorage only; AdminLayout checks this key
       sessionStorage.setItem("adminAuthed", "true");
-      localStorage.setItem("adminAuthed", "true");
       navigate("/admin", { replace: true });
     } else {
       setError("Invalid credentials");
