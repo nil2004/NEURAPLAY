@@ -21,6 +21,15 @@ const AdminLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // On hard refresh, clear auth (forces login prompt)
+  if (typeof window !== 'undefined') {
+    const navEntries = (performance.getEntriesByType?.('navigation') as PerformanceNavigationTiming[] | undefined);
+    const isReload = !!navEntries && navEntries.length > 0 && navEntries[0].type === 'reload';
+    if (isReload) {
+      sessionStorage.removeItem('adminAuthed');
+    }
+  }
+
   // Require sessionStorage so a hard refresh asks to login again
   const authed = typeof window !== 'undefined' && sessionStorage.getItem('adminAuthed') === 'true';
   if (!authed) {
