@@ -21,16 +21,7 @@ const AdminLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Force re-auth on hard refresh and guard routes
-  if (typeof window !== 'undefined') {
-    const nav = (performance.getEntriesByType?.('navigation') as any)?.[0];
-    const isReload = nav && nav.type === 'reload';
-    if (isReload) {
-      sessionStorage.removeItem('adminAuthed');
-      localStorage.removeItem('adminAuthed');
-    }
-  }
-
+  // Check authentication status
   const authed = typeof window !== 'undefined' && (sessionStorage.getItem('adminAuthed') === 'true' || localStorage.getItem('adminAuthed') === 'true');
   if (!authed) {
     return <Navigate to="/admin/login" replace />
