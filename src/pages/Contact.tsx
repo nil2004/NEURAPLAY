@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Instagram, Youtube, Twitter, Clock, Users, Calendar, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Clock, Users, Calendar, AlertCircle } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -216,28 +216,12 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold mb-6">Follow Us</h2>
                 <div className="flex space-x-4 mb-4">
                   <a
-                    href="https://instagram.com/collegeclashhub"
+                    href="https://www.instagram.com/neuraplay_org?utm_source=qr&igsh=cmF5bGJjeXh5em9n"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gradient-to-br from-pink-500/20 to-pink-500/10 hover:from-pink-500/30 hover:to-pink-500/20 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
                   >
                     <Instagram className="h-6 w-6 text-pink-600" />
-                  </a>
-                  <a
-                    href="https://youtube.com/@collegeclashhub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gradient-to-br from-red-500/20 to-red-500/10 hover:from-red-500/30 hover:to-red-500/20 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
-                  >
-                    <Youtube className="h-6 w-6 text-red-600" />
-                  </a>
-                  <a
-                    href="https://twitter.com/collegeclashhub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gradient-to-br from-blue-500/20 to-blue-500/10 hover:from-blue-500/30 hover:to-blue-500/20 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
-                  >
-                    <Twitter className="h-6 w-6 text-blue-600" />
                   </a>
                 </div>
                 <p className="text-sm text-muted-foreground">
