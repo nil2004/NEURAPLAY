@@ -173,7 +173,7 @@ const About = () => {
         </section>
 
         {/* Organizing Committee */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Meet Our Team
@@ -201,7 +201,7 @@ const About = () => {
               </Card>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Call to Action */}
         <section className="text-center">

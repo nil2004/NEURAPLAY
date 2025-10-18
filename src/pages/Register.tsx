@@ -318,7 +318,7 @@ const Register = () => {
                     <Input
                       id="whatsapp"
                       type="tel"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 9875257849"
                       value={formData.whatsapp}
                       onChange={(e) => handleInputChange('whatsapp', e.target.value)}
                       className={`bg-white border-2 ${errors.whatsapp ? 'border-destructive' : 'border-purple-200 focus:border-primary'}`}

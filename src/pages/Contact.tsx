@@ -43,7 +43,7 @@ const Contact = () => {
             <AlertDescription>
               <strong>Quick Response:</strong> We typically respond within 24 hours | 
               <strong> Tournament Support:</strong> Available 9 AM - 9 PM | 
-              <strong> Emergency:</strong> Call +91 98765 43210
+              <strong> Emergency:</strong> Call +91 9875257849
             </AlertDescription>
           </Alert>
         </div>
@@ -137,7 +137,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone & WhatsApp</h3>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
+                    <p className="text-muted-foreground">+91 9875257849</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       Available 9 AM - 9 PM IST
                     </p>
@@ -152,8 +152,6 @@ const Contact = () => {
                     <h3 className="font-semibold mb-1">Tournament Venue</h3>
                     <p className="text-muted-foreground">
                       Roorkee
-                      <br />
-                      North Campus, Delhi - 110007
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
                       Nov 10, 2025 | 10:00 AM onwards
@@ -190,22 +188,22 @@ const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-semibold text-primary">RS</span>
+                      <span className="text-sm font-semibold text-primary">NG</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold">Rahul Sharma</h3>
+                      <h3 className="font-semibold">Nilesh Gupta</h3>
                       <p className="text-sm text-muted-foreground">Event Coordinator</p>
-                      <p className="text-xs text-muted-foreground">+91 98765 43210</p>
+                      <p className="text-xs text-muted-foreground">+91 9875257849</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-semibold text-accent">PS</span>
+                      <span className="text-sm font-semibold text-accent">AS</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold">Priya Singh</h3>
+                      <h3 className="font-semibold">Ansh Singh Rathore</h3>
                       <p className="text-sm text-muted-foreground">Technical Head</p>
-                      <p className="text-xs text-muted-foreground">+91 98765 43211</p>
+                      <p className="text-xs text-muted-foreground">+91 8477846000</p>
                     </div>
                   </div>
                 </div>

@@ -239,25 +239,25 @@ const Rules = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>Qualification Rounds</CardTitle>
+                <CardTitle>Qualification Rounds (College Qualifier)</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Single elimination format</span>
+                    <span><strong>Format:</strong> Single elimination</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Best of 1 match per round</span>
+                    <span><strong>Match Type:</strong> Match per round (The specific number of games/matches is now open)</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Top 4 teams advance to semi-finals</span>
+                    <span><strong>Advancement:</strong> The top 1 girls team and the top 1 boys team will advance to the Final</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Random team pairings</span>
+                    <span><strong>Pairings:</strong> Random team pairings</span>
                   </li>
                 </ul>
               </CardContent>
@@ -271,19 +271,27 @@ const Rules = () => {
                 <ul className="space-y-2">
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Semi-finals: Best of 1</span>
+                    <span><strong>Semi-finals:</strong> (The specific number of games/matches is now open)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <AlertTriangle className="h-4 w-4 text-yellow-500 mr-2 mt-0.5" />
+                    <span className="text-sm"><strong>Note:</strong> The structure still includes semi-finals, but the format (e.g., Best of 3, Single Match) needs to be defined</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Grand Final: Best of 1</span>
+                    <span><strong>Grand Final:</strong> (The specific number of games/matches is now open)</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Live streaming for finals</span>
+                    <span><strong>Prize Distribution:</strong> Prizes will be given to the Winner, Runner-up, and MVP (Most Valuable Player)</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span>Immediate prize distribution</span>
+                    <span><strong>Visibility:</strong> Live streaming for finals</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <span><strong>Prize Timing:</strong> Immediate prize distribution</span>
                   </li>
                 </ul>
               </CardContent>

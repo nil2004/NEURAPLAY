@@ -402,7 +402,7 @@ const Home = () => {
                   When is the registration deadline?
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Registration closes on March 10, 2025. Late registrations will not be accepted.
+                  Registration closes on Nov 10, 2025. Late registrations will not be accepted.
                 </p>
               </CardContent>
             </Card>
@@ -426,7 +426,7 @@ const Home = () => {
                   What are the tournament dates?
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  College qualifiers: March 1-10, 2025. Grand finale: March 15, 2025 at Delhi University.
+                  College qualifiers: starting from 10 NOV 2025. Grand finale: Coming soon at Roorkee.
                 </p>
               </CardContent>
             </Card>
